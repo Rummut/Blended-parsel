@@ -36,3 +36,27 @@
 
 // }
 // ref.buttonRef.addEventListener("click", onButtonClick)
+
+//TODO:==============================================
+/*
+Завдання 3
+Кнопка "Приховати" ховає текст і замінює назву кнопки на
+"Розкрити", при повторному натисканні текст знову стає доступним
+і кнопка набуває початкового вигляду.
+*/
+// const ref = {
+//   buttonRef: document.querySelector('#passwordButton'),
+//   inputRef: document.querySelector('#passwordInput'),
+// };
+
+// ref.buttonRef.addEventListener('click', onButtonClick);
+
+// function onButtonClick(event) {
+//   if (ref.inputRef.type === 'password') {
+//     ref.buttonRef.textContent = 'Приховати';
+//     ref.inputRef.type = 'text';
+//     return;
+//   }
+//   ref.buttonRef.textContent = 'Розкрити';
+//   ref.inputRef.type = 'password';
+// }
