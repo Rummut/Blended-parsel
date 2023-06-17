@@ -136,49 +136,97 @@
 // Забрати завдання зі списку.
 // Список із завданнями має бути доступним після перезавантаження сторінки.
 
-const formEl = document.querySelector('#task-form');
-const listEl = document.querySelector('#list');
+// const formEl = document.querySelector('#task-form');
+// const listEl = document.querySelector('#list');
 
-const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-render();
+// const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+// render();
 
-formEl.addEventListener('submit', onSubmit);
-listEl.addEventListener('click', onDelete);
+// formEl.addEventListener('submit', onSubmit);
+// listEl.addEventListener('click', onDelete);
 
-function onSubmit(e) {
-  e.preventDefault();
+// function onSubmit(e) {
+//   e.preventDefault();
 
-  const task = formEl.elements.taskName.value.trim();
+//   const task = formEl.elements.taskName.value.trim();
 
-  if (!task) {
-    return;
-  }
-  tasks.push(task);
-  render();
-  onSave();
-}
+//   if (!task) {
+//     return;
+//   }
+//   tasks.push(task);
+//   render();
+//   onSave();
+// }
 
-function render() {
-  listEl.innerHtml = '';
-  const murkup = tasks
-    .map(
-      (task, index) =>
-        `<li><p>${task}</p><button type="button" data-index = ${index}>delete</button></li>`
-    )
-    .join('');
-  listEl.innerHTML = murkup;
-}
-function onDelete(e) {
-  if (e.target.tagName !== 'BUTTON') {
-    return;
-  }
-  const index = e.target.dataset.index;
-  tasks.splice(index, 1);
-  render();
-  onSave();
-}
+// function render() {
+//   listEl.innerHtml = '';
+//   const murkup = tasks
+//     .map(
+//       (task, index) =>
+//         `<li><p>${task}</p><button type="button" data-index = ${index}>delete</button></li>`
+//     )
+//     .join('');
+//   listEl.innerHTML = murkup;
+// }
+// function onDelete(e) {
+//   if (e.target.tagName !== 'BUTTON') {
+//     return;
+//   }
+//   const index = e.target.dataset.index;
+//   tasks.splice(index, 1);
+//   render();
+//   onSave();
+// }
 
-function onSave() {
-  localStorage.setItem('tasks', JSON.stringify(tasks));
-}
+// function onSave() {
+//   localStorage.setItem('tasks', JSON.stringify(tasks));
+// }
 // const getItem = JSON.parse(localStorage.getItem('tasks'));
+
+
+
+// ЗАДАЧА 2
+// Зробити перемикач теми. Зберігати тему у локальному сховище.
+// При перезавантаженні сторінки перевіряти сховище та ставити тему, яка там вказана.
+// Додати класи для змін тем
+
+
+const inputEl = document.querySelector("#checkbox")
+const bodyEl = document.querySelector("body")
+
+
+const mainTheme = localStorage.getItem("theme")
+switch (mainTheme) {
+
+  case "darkTheme":
+    bodyEl.classList.add("dark")
+    inputEl.checked = true
+    break;
+  
+  case "lightTheme":
+    bodyEl.classList.add("light")
+    inputEl.checked = false
+    break;
+  
+  default:
+    bodyEl.classList.add("light")
+    inputEl.checked = false
+    break;
+}
+console.log(mainTheme)
+
+const themeToggle = (event) => {
+  if (inputEl.checked === true) {
+    bodyEl.classList.add("dark")
+    bodyEl.classList.remove("light")
+    localStorage.setItem("theme", "darkTheme")
+  }
+  if (inputEl.checked === false) {
+    bodyEl.classList.remove("dark")
+    bodyEl.classList.add("light")
+    localStorage.setItem("theme", "lightTheme")
+  }
+}
+
+inputEl.addEventListener("click", themeToggle)
+
