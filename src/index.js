@@ -128,3 +128,57 @@
 Завдання 11
 Наведено список людей. Зроби фільтр на ім'я/прізвище.
 */
+
+// Створи перелік справ.
+// Є інпут, який вводиться назва завдання.
+// Після натискання на кнопку "Додати" завдання додається до списку #list.
+// Поруч із кожним завданням знаходиться кнопка "Видалити", щоб можна було
+// Забрати завдання зі списку.
+// Список із завданнями має бути доступним після перезавантаження сторінки.
+
+const formEl = document.querySelector('#task-form');
+const listEl = document.querySelector('#list');
+
+const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+render();
+
+formEl.addEventListener('submit', onSubmit);
+listEl.addEventListener('click', onDelete);
+
+function onSubmit(e) {
+  e.preventDefault();
+
+  const task = formEl.elements.taskName.value.trim();
+
+  if (!task) {
+    return;
+  }
+  tasks.push(task);
+  render();
+  onSave();
+}
+
+function render() {
+  listEl.innerHtml = '';
+  const murkup = tasks
+    .map(
+      (task, index) =>
+        `<li><p>${task}</p><button type="button" data-index = ${index}>delete</button></li>`
+    )
+    .join('');
+  listEl.innerHTML = murkup;
+}
+function onDelete(e) {
+  if (e.target.tagName !== 'BUTTON') {
+    return;
+  }
+  const index = e.target.dataset.index;
+  tasks.splice(index, 1);
+  render();
+  onSave();
+}
+
+function onSave() {
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+// const getItem = JSON.parse(localStorage.getItem('tasks'));
