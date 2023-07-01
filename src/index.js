@@ -191,42 +191,44 @@
 // Додати класи для змін тем
 
 
-const inputEl = document.querySelector("#checkbox")
-const bodyEl = document.querySelector("body")
+// const inputEl = document.querySelector("#checkbox")
+// const bodyEl = document.querySelector("body")
 
 
-const mainTheme = localStorage.getItem("theme")
-switch (mainTheme) {
+// const mainTheme = localStorage.getItem("theme")
+// switch (mainTheme) {
 
-  case "darkTheme":
-    bodyEl.classList.add("dark")
-    inputEl.checked = true
-    break;
+//   case "darkTheme":
+//     bodyEl.classList.add("dark")
+//     inputEl.checked = true
+//     break;
   
-  case "lightTheme":
-    bodyEl.classList.add("light")
-    inputEl.checked = false
-    break;
+//   case "lightTheme":
+//     bodyEl.classList.add("light")
+//     inputEl.checked = false
+//     break;
   
-  default:
-    bodyEl.classList.add("light")
-    inputEl.checked = false
-    break;
-}
-console.log(mainTheme)
+//   default:
+//     bodyEl.classList.add("light")
+//     inputEl.checked = false
+//     break;
+// }
+// console.log(mainTheme)
 
-const themeToggle = (event) => {
-  if (inputEl.checked === true) {
-    bodyEl.classList.add("dark")
-    bodyEl.classList.remove("light")
-    localStorage.setItem("theme", "darkTheme")
-  }
-  if (inputEl.checked === false) {
-    bodyEl.classList.remove("dark")
-    bodyEl.classList.add("light")
-    localStorage.setItem("theme", "lightTheme")
-  }
-}
+// const themeToggle = (event) => {
+//   if (inputEl.checked === true) {
+//     bodyEl.classList.add("dark")
+//     bodyEl.classList.remove("light")
+//     localStorage.setItem("theme", "darkTheme")
+//   }
+//   if (inputEl.checked === false) {
+//     bodyEl.classList.remove("dark")
+//     bodyEl.classList.add("light")
+//     localStorage.setItem("theme", "lightTheme")
+//   }
+// }
 
-inputEl.addEventListener("click", themeToggle)
+// inputEl.addEventListener("click", themeToggle)
+
+import './js/gallery'
 
